@@ -25,4 +25,4 @@ make sure that the tomcat server of the web service is running otherwise you won
 
 -The web service has two implementation one  using jax-rs and the other one using jax-ws
 
--we have used the Media wiki api  in order to fetch data about the current operation that is being performed by the user. You can see that in the information section of our project client.
+-we have used the Media wiki api  in order to fetch data about the current operation that is being performed by the user. You can see that within the information section of our project client.
