@@ -11,7 +11,7 @@ You can use the service to add numbers, substract them, divide or multiply them.
 
 In order to run the client:
 
-download it from the frontend branch here on GitHub
+I-download it from the frontend branch here on GitHub
 -Make sure you have node.js install on your machine
 -run npm install command
 -run the npm start command
