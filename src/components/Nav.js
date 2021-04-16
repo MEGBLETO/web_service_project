@@ -24,9 +24,9 @@ const getValue = (e) =>{
 
         <select name="operation" id="operation" onChange={(e) => getValue(e)}>
           <option value="">--Please choose an operation--</option>
-          <option value="add">Addition</option>
-          <option value="sub">Substraction</option>
-          <option value="mul">Multiplication</option>
+          <option value="addition">Addition</option>
+          <option value="substraction">Substraction</option>
+          <option value="multiplication">Multiplication</option>
         </select>
       </div>
     </div>

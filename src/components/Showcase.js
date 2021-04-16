@@ -1,48 +1,56 @@
 import React, {useState, useEffect} from 'react'
 import Calcontainer from '../components/Calcontainer'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import {getchresult} from '../action/getresult'
 
 
 
 
 
 const Showcase = () => {
-  const operation = useSelector(state => state.choosedoperation)
-  const opeValue = operation.value
-  /*let numbersObject = useSelector(state =>state.enterednumbers.value)
+  /*Here i will updatethe store about the result */
+
+  const responsia = useDispatch();
+
+
+
+
+
+  /*Accessing the data from the store*/
+  let etat = useSelector(state => state)
+  const operation = etat.choosedoperation.value;
+  const opeValue = etat.enterednumbers.value;
+
+
+
+
   
 
-  let values = numbersObject
 
-  const [val , setval] = useState()
-
-  //setval(values)
   
-   if(numbersObject){
+  const getData = async() =>{
+    
+    
+    let num1 = 26;
+    let num2 = 15;
+    console.log(num1)
+  
 
-    setval(numbersObject)
-   }else{
-      <h1>Loading</h1>
-   }
-   */
-
-
-   console.log(operation)
-
-const getData = async() =>{
-  const res = await fetch(`http://localhost:8080/restfulMathCalculatoro/rest/calculator/'${opeValue}'/3/9`)
+  const res = await fetch(`http://localhost:8080/restfulMathCalculatoro/rest/calculator/${operation}/${num1}/${num2}`)
   const data = await res.text();
   let parser = new DOMParser();
       const value = await parser.parseFromString(data, 'text/html')
-      const actualValue = await value.getElementsByTagName('result');
+      const actualValue = value.getElementsByTagName('result');
       /*************Our operation result */
-      const myResult =actualValue[0].innerHTML
-      console.log(myResult);
+        const myResult = actualValue[0].innerHTML
+        responsia(getchresult(myResult))
+        console.log(myResult);
+  
 }
 
 useEffect(()  =>{
   getData();
-}, [])
+}, [operation])
 
 
   return (

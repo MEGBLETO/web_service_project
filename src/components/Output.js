@@ -4,14 +4,13 @@ import {useSelector} from 'react-redux';
 const Output = () => {
 
 
-  const operation = useSelector(state => state.choosedoperation)
-  const result = useSelector(state => state.enterednumbers)
+  const result = useSelector(state => state.reponse.value)
 
+  console.log(result)
   return (
     <div className="output">
       <div className="output-container">
-        <h3>{operation.value}</h3>
-       {/*<h3>{result}</h3>*/}
+       <h3 id="reponse">{result}</h3>
       </div>
     </div>
   )

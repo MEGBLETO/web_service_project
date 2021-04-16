@@ -10,8 +10,8 @@ const Calc = () => {
 
 const [num, setNumbers] = useState([
   {
-    num1 : 0,
-    num2 : 0
+    num1 : "",
+    num2 : ""
   }
 ])
 
