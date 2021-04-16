@@ -4,25 +4,27 @@ import{useSelector} from 'react-redux'
 const Info = () => {
   const selection = useSelector(state => state.choosedoperation.value)
 
-
+console.log(selection)
   const [data, setData]= useState()
 
 
 
 const getData = async() =>{
-  const req = await fetch(`http://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&exchars=200&titles=${selection}&format=json`,  {
-    mode: 'cors',
-    method: 'GET',
-    cache: 'no-cache',
-    credentials:'same-origin',
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-      "withCredentials": 'false'
-    }})
+  const req = await fetch(`https://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&exchars=200&titles=${selection}&format=json&explaintext=true`)
 
   const res =  await req.json();
-  console.log(res)
+  let donnee = res.query.pages
+  
+  if(selection === 'addition'){
+    setData(donnee[61338].extract)git 
+    console.log(donnee[61338].extract)
+  }
+  else if(selection === 'substraction'){
+    setData(donnee[24774866].extract)
+  }
+  else{
+    setData(donnee[20845].extract)
+  }
 
 }
 
@@ -36,7 +38,7 @@ const getData = async() =>{
   return (
     <div className="info">
       <h1>Information</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, itaque illum. Accusamus deserunt numquam quae pariatur maxime tempore impedit repellat fugit nam ea ex, dolorum reiciendis nobis quos esse reprehenderit perspiciatis eius, molestias molestiae expedita placeat cum in fuga libero. Hic doloribus a omnis eos, eius consequatur, odio vel soluta laborum asperiores illo ex eligendi sed illum assumenda quae quibusdam?</p>
+           <p>{data}</p>
     </div>
   )
 }
